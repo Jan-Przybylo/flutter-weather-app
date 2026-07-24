@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:weather/core/constants.dart';
+import 'package:weather/models/city_model.dart';
 import 'package:weather/services/current_weather_api.dart';
 
 import '../models/weather_model.dart';
 
 class CurrentWeatherRepository {
-  final String city;
+  final City city;
   CurrentWeatherRepository({required this.city});
 
   CurrentWeatherApi api = CurrentWeatherApi();
@@ -13,7 +15,7 @@ class CurrentWeatherRepository {
   Future<Weather?> fetchData() async {
     final String unformatedWeather;
     try {
-      unformatedWeather = await api.getWeather(debug: true, city: city);
+      unformatedWeather = await api.getWeather(debug: debug, city: city);
     } catch (e) {
       throw Exception("Nie udało się pobrać pogody!");
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather/models/city_model.dart';
 import 'package:weather/repository/current_weather_repository.dart';
 
 import '../models/weather_model.dart';
@@ -13,7 +14,7 @@ class WeatherViewModel extends ChangeNotifier {
 
   String? error;
 
-  final String city;
+  final City city;
   WeatherViewModel({required this.city})
   {
     _currentWeatherRepository = CurrentWeatherRepository(city: city);

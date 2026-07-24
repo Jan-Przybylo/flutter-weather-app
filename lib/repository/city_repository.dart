@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:weather/core/constants.dart';
 import 'package:weather/models/city_model.dart';
 import 'package:weather/services/geocoding_api.dart';
 
@@ -8,7 +9,7 @@ class CityRepository {
   Future<Set<City>> fetchData({required String city}) async {
     final String unformatedOutput;
     try {
-      unformatedOutput = await geocodingApi.getGeocoding(debug: true, city: city);
+      unformatedOutput = await geocodingApi.getGeocoding(debug: debug, city: city);
     } catch (e) {
       throw Exception("Nie udało się pobrać geolokalizacji!: \n $e");
     }
