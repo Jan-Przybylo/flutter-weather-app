@@ -15,9 +15,16 @@ class _CitySearchPageState extends State<CitySearchPage> {
   late CityViewModel vm;
 
   void search(String value) async {
+    final String temp = _controller.text;
     if (_controller.text.length > 3 && !vm.loading) {
+      await Future.delayed(Duration(milliseconds: 500)); // wait till typing
+      if (_controller.text != temp) return;
+      
       vm.loadCities(query: _controller.text);
     }
+
+    await Future.delayed(Duration(seconds: 1));
+    if (_controller.text != temp) search(value);
   }
 
   @override
@@ -26,7 +33,7 @@ class _CitySearchPageState extends State<CitySearchPage> {
       child: CupertinoListSection.insetGrouped(
         header: SafeArea(
           child: Text(
-            "Wyszukaj miasto",
+            "Search for a city",
             style: TextStyle(color: CupertinoColors.black),
           ),
         ),
@@ -58,7 +65,7 @@ class _CitySearchPageState extends State<CitySearchPage> {
             listenable: vm,
             builder: (context, child) {
               if (vm.hasData == false || vm.cities.isEmpty) {
-                final message = vm.loading ? "Wczytywanie miast" : "Pusta lista";
+                final message = vm.loading ? "Loading cities" : "Empty list";
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
