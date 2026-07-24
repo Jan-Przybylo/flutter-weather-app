@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
+import 'package:weather/core/constants.dart';
+import 'package:weather/effects/weather_effects.dart';
+import 'package:weather/models/city_model.dart';
+import 'package:weather/pages/city_search_page.dart';
 import 'package:weather/viewmodels/weather_view_model.dart';
 
 import '../models/weather_model.dart';
 
 class WeatherPage extends StatefulWidget {
-  final String city;
+  final City city;
   const WeatherPage({super.key, required this.city});
 
   @override
@@ -15,34 +19,47 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   late WeatherViewModel vm;
+  Gradient typeOfGradient = clear;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: double.infinity,
-      padding: EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        // image: DecorationImage(image: AssetImage("assets/images/test.png")),
-        gradient: LinearGradient(
-          begin: Alignment.bottomLeft,
-          colors: [CupertinoColors.systemBlue, CupertinoColors.systemTeal],
-        ),
-      ),
-      child: Column(
-        children: [
-          SizedBox(height: 50),
-          ListenableBuilder(
-            listenable: vm,
-            builder: (context, child) {
-              if (vm.hasData == false || vm.loading == true) {
-                return CupertinoActivityIndicator(radius: 40);
-              }
-              return mainWeather(context, vm.weather!);
-            },
+    return Stack(
+      children: [
+        AnimatedContainer(
+          duration: Duration(seconds: 1),
+          width: double.infinity,
+          height: double.infinity,
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(gradient: typeOfGradient),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 50),
+                ListenableBuilder(
+                  listenable: vm,
+                  builder: (context, child) {
+                    if (vm.hasData == false || vm.loading == true) {
+                      return CupertinoActivityIndicator(radius: 40);
+                    }
+                    return Column(
+                      children: [mainWeather(context, vm.weather!)],
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
-        ],
-      ),
+        ),
+        ListenableBuilder(
+          listenable: vm,
+          builder: (context, child) {
+            if (vm.hasData == false || vm.loading == true) {
+              return SizedBox.shrink();
+            }
+            return WeatherEffects(type: vm.weather!.weatherType);
+          },
+        ),
+      ],
     );
   }
 
@@ -56,14 +73,19 @@ class _WeatherPageState extends State<WeatherPage> {
         blur: 2,
         glassColor: Color.fromARGB(41, 255, 255, 255),
       ),
-      child: LiquidGlass(
+      child: FakeGlass(
         shape: LiquidRoundedSuperellipse(borderRadius: 50),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
             children: [
               CupertinoButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                    CupertinoPageRoute(builder: (context) => CitySearchPage()),
+                    (route) => false,
+                  );
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -74,7 +96,7 @@ class _WeatherPageState extends State<WeatherPage> {
                         color: CupertinoColors.white,
                       ),
                     ),
-                    Icon(Icons.pin_drop_outlined,color: CupertinoColors.white,)
+                    Icon(Icons.pin_drop_outlined, color: CupertinoColors.white),
                   ],
                 ),
               ),
@@ -125,11 +147,21 @@ class _WeatherPageState extends State<WeatherPage> {
     );
   }
 
+  void changeBackgroundGradient() {
+    if (vm.hasData || !vm.loading) {
+      setState(() {
+        typeOfGradient = clouds;
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     vm = WeatherViewModel(city: widget.city);
     vm.loadWeather();
+
+    vm.addListener(changeBackgroundGradient);
   }
 
   @override

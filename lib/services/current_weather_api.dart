@@ -1,16 +1,17 @@
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+import 'package:weather/models/city_model.dart';
 
 class CurrentWeatherApi {
 
-  Future<String> getWeather({bool debug = false, required String city }) async {
+  Future<String> getWeather({bool debug = false, required City city }) async {
     final String API_KEY = dotenv.env['API_KEY'] ?? "";
     // if (API_KEY == "") throw Exception("Brakuje klucza API!");
     final String apikey = API_KEY;
     final url = Uri.https("api.openweathermap.org", "/data/2.5/weather", {
-      'lat': '44.34',
-      'lon': '10.99',
+      'lat': city.lat.toString(),
+      'lon': city.lon.toString(),
       'units': 'metric',
       'appid': apikey,
     });
@@ -18,7 +19,7 @@ class CurrentWeatherApi {
       final response = await http.get(url);
 
       if (response.statusCode != 200) {
-        print("FAILED" + response.body);
+        // print("FAILED" + response.body);
         throw Exception("Failed to get data: $response");
       }
       return response.body;

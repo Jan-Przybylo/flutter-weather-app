@@ -5,6 +5,8 @@ class City {
   final String lat;
   final String lon;
 
+  bool saved = false;
+
   City({
     required this.name,
     required this.lat,
@@ -13,13 +15,29 @@ class City {
     required this.state,
   });
 
-  @override
-  bool operator ==(Object other) {
-    if (other is! City) return false;
-    if (other.name == name && other.lat == lat && other.lon == lon) return true;
+  Map<String, dynamic> toJson() => {'name': name, 'country': country, 'state': state, 'lat': lat, 'lon':lon};
+
+  City.fromJson(Map<String, dynamic> json):
+    name = json['name'] as String,
+    country = json['country'] as String,
+    state = json['state'] as String,
+    lat = json['lat'] as String,
+    lon = json['lon'] as String;
+
+
+  bool isEmpty()
+  {
+    if (name.isEmpty || name == "") return true;
     return false;
   }
 
   @override
-  int get hashCode => Object.hash(name, lat, lon);
+  bool operator ==(Object other) {
+    if (other is! City) return false;
+    if (other.name == name && other.lat == lat && other.lon == lon && other.saved == saved) return true;
+    return false;
+  }
+
+  @override
+  int get hashCode => Object.hash(name, lat, lon, saved);
 }

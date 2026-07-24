@@ -11,7 +11,7 @@ class CitySearchPage extends StatefulWidget {
 
 class _CitySearchPageState extends State<CitySearchPage> {
   final TextEditingController _controller = TextEditingController();
-
+  final FocusNode _focusNode = FocusNode();
   late CityViewModel vm;
 
   void search(String value) async {
@@ -33,6 +33,7 @@ class _CitySearchPageState extends State<CitySearchPage> {
         children: [
           CupertinoTextField(
             controller: _controller,
+            focusNode: _focusNode,
             onChanged: (value) {
               search(value);
             },
@@ -81,6 +82,7 @@ class _CitySearchPageState extends State<CitySearchPage> {
   @override
   void initState() {
     super.initState();
+    _focusNode.requestFocus();
     vm = CityViewModel();
   }
 }
