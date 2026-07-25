@@ -46,6 +46,7 @@ class CurrentWeatherRepository {
       windSpeed: temp['wind']['speed'].toString(),
       windDeg: temp['wind']['deg'].toString(),
       cloudiness: temp['clouds']['all'].toString(),
+      time: DateTime.fromMicrosecondsSinceEpoch(temp['dt'])
     );
 
     return output;

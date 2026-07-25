@@ -37,7 +37,15 @@ class Weather {
   // Cloudiness, %
   final String cloudiness;
 
+  // time
+  final DateTime time;
+
   Widget get image => WeatherImage(weatherIcon: weatherIcon).getImage();
+
+  //formated temperature : 20.4214 -> 20
+  String get fTemperature => double.parse(temperature).truncate().toString();
+  String get fFeelsLike => double.parse(feelsTemperature).truncate().toString();
+
 
   Weather({
     required this.city,
@@ -54,6 +62,7 @@ class Weather {
     required this.windSpeed,
     required this.windDeg,
     required this.cloudiness,
+    required this.time
   });
 }
 
