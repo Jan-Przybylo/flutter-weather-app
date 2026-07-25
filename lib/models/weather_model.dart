@@ -25,7 +25,6 @@ class Weather {
 
   final bool isDay;
 
-
   final String weatherDescription;
 
   final String pressure;
@@ -46,7 +45,6 @@ class Weather {
   String get fTemperature => double.parse(temperature).truncate().toString();
   String get fFeelsLike => double.parse(feelsTemperature).truncate().toString();
 
-
   Weather({
     required this.city,
     required this.temperature,
@@ -62,11 +60,31 @@ class Weather {
     required this.windSpeed,
     required this.windDeg,
     required this.cloudiness,
-    required this.time
+    required this.time,
   });
+
+  static WeatherType stringToWeatherType(String input) {
+    return switch (input.toLowerCase()) {
+      "rain" || "drizzle" => WeatherType.rain,
+      "snow" => WeatherType.snow,
+      "clouds" ||
+      "mist" ||
+      "haze" ||
+      "smoke" ||
+      "dust" ||
+      "fog" ||
+      "sand" ||
+      "ash" ||
+      "squall" ||
+      "tornado" => WeatherType.clouds,
+      "clear" => WeatherType.clear,
+      "thunderstorm" => WeatherType.thunderstorm,
+      _ => WeatherType.clear,
+    };
+  }
 }
 
-enum WeatherType { sun, rain, snow, clouds }
+enum WeatherType { rain, snow, clouds, clear, thunderstorm }
 
 class WeatherImage {
   // icon number
@@ -74,10 +92,8 @@ class WeatherImage {
 
   WeatherImage({required this._weatherIcon});
 
-
   // Converts int to String based on https://openweathermap.org/api/weather-conditions
-  String iconToString(int icon)
-  {
+  String iconToString(int icon) {
     return switch (icon) {
       1 => 'clear',
       2 => 'few_clouds',
@@ -87,7 +103,7 @@ class WeatherImage {
       10 => 'rain',
       11 => 'thunderstorm',
       13 => 'snow',
-      50 => 'mist', 
+      50 => 'mist',
       _ => 'clear',
     };
   }

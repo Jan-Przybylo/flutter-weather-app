@@ -26,7 +26,7 @@ class CurrentWeatherRepository {
   Weather? stringToWeather(String input) {
 
     final temp = jsonDecode(input);
-    final WeatherType type = stringToWeatherType(temp['weather'][0]['main'].toString());
+    final WeatherType type = Weather.stringToWeatherType(temp['weather'][0]['main'].toString());
     bool isDay = temp['weather'][0]['icon'][2] == 'd';
 
     final String icon = temp['weather'][0]['icon'].toString().substring(0,2);
@@ -52,14 +52,4 @@ class CurrentWeatherRepository {
     return output;
   }
 
-  WeatherType stringToWeatherType(String type)
-  {
-    return switch(type.toLowerCase()){
-      "sun" => WeatherType.sun,
-      "rain" => WeatherType.rain,
-      "snow" => WeatherType.snow,
-      "clouds" => WeatherType.clouds,
-      _ => WeatherType.sun,
-    };
-  }
 }

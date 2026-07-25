@@ -19,7 +19,7 @@ class WeatherPage extends StatefulWidget {
 
 class _WeatherPageState extends State<WeatherPage> {
   late WeatherViewModel vm;
-  Gradient typeOfGradient = clear;
+  late WeatherEffects _weatherEffects = WeatherEffects(type: WeatherType.clear);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class _WeatherPageState extends State<WeatherPage> {
             width: double.infinity,
             height: double.infinity,
             padding: EdgeInsets.all(20),
-            decoration: BoxDecoration(gradient: typeOfGradient),
+            decoration: BoxDecoration(gradient: _weatherEffects.backgroundEffect.backgroundGradient),
             child: SingleChildScrollView(
               child: Column(
                 children: [
@@ -60,7 +60,7 @@ class _WeatherPageState extends State<WeatherPage> {
               if (vm.hasData == false || vm.loading == true) {
                 return SizedBox.shrink();
               }
-              return WeatherEffects(type: vm.weather!.weatherType);
+              return _weatherEffects.backgroundEffect;
             },
           ),
         ],
@@ -373,10 +373,10 @@ class _WeatherPageState extends State<WeatherPage> {
     );
   }
 
-  void changeBackgroundGradient() {
-    if (vm.hasData || !vm.loading) {
+  void changeWeatherEffect() {
+    if (vm.hasData && !vm.loading) {
       setState(() {
-        typeOfGradient = clouds;
+        _weatherEffects = WeatherEffects(type: vm.weather!.weatherType);
         
       });
     }
@@ -388,7 +388,7 @@ class _WeatherPageState extends State<WeatherPage> {
     vm = WeatherViewModel(city: widget.city);
     vm.loadWeather();
 
-    vm.addListener(changeBackgroundGradient);
+    vm.addListener(changeWeatherEffect);
   }
 
   @override
