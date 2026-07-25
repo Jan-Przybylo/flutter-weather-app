@@ -1,29 +1,40 @@
 import 'package:flutter/cupertino.dart';
 import 'package:weather/core/constants.dart';
 import 'package:weather/effects/weather_effects.dart';
+import 'package:weather/effects/weather_rain_effect.dart';
 
 class WeatherThunderstormEffect extends WeatherCustomEffect {
   const WeatherThunderstormEffect({super.key});
 
   @override
-  State<WeatherThunderstormEffect> createState() => _WeatherThunderstormEffectState();
+  State<WeatherThunderstormEffect> createState() =>
+      _WeatherThunderstormEffectState();
+
+  @override
+  Gradient get backgroundGradient => clouds;
 }
 
 class _WeatherThunderstormEffectState extends State<WeatherThunderstormEffect> {
   double lightningOpacity = 0.0;
 
-
   @override
   Widget build(BuildContext context) {
-    return lightningWidget();
+    return IgnorePointer(child: lightningWidget());
   }
 
   Widget lightningWidget() {
-    return AnimatedOpacity(
-      opacity: lightningOpacity,
-      duration: Duration(seconds: 1),
-      curve: Curves.bounceInOut,
-      child: Container(decoration: BoxDecoration(gradient: lightning)),
+    return IgnorePointer(
+      child: Stack(
+        children: [
+          WeatherRainEffect(),
+          AnimatedOpacity(
+            opacity: lightningOpacity,
+            duration: Duration(seconds: 1),
+            curve: Curves.bounceInOut,
+            child: Container(decoration: BoxDecoration(gradient: lightning)),
+          ),
+        ],
+      ),
     );
   }
 
@@ -32,7 +43,7 @@ class _WeatherThunderstormEffectState extends State<WeatherThunderstormEffect> {
       lightningOpacity = 1.0;
     });
     await Future.delayed(Duration(seconds: 1));
-    if(!mounted) return;
+    if (!mounted) return;
     setState(() {
       lightningOpacity = 0.0;
     });
@@ -43,9 +54,6 @@ class _WeatherThunderstormEffectState extends State<WeatherThunderstormEffect> {
     super.initState();
 
     Future.delayed(Duration(seconds: 2), doLightning);
-    if(!mounted) return;
-
+    if (!mounted) return;
   }
-  
-  
 }

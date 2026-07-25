@@ -32,7 +32,7 @@ class CurrentWeatherApi {
       "weather": [
         {
           "id": 804,
-          "main": "Clouds",
+          "main": "Thunderstorm",
           "description": "overcast clouds",
           "icon": "04d",
         },

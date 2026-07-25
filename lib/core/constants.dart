@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:liquid_glass_renderer/liquid_glass_renderer.dart';
 
+// uses fake api response if true
 const bool debug = true;
 
 const double cardSizeFont = 75.0;
@@ -24,3 +23,14 @@ const Gradient lightning = LinearGradient(
   begin: Alignment.bottomLeft,
   colors: [CupertinoColors.systemGrey4, CupertinoColors.systemGrey5],
 );
+
+//For clarity
+// ignore: constant_identifier_names
+const RAIN_DROP_COLOR = Color.fromARGB(50, 210, 219, 223);
+
+// ignore: constant_identifier_names
+const RAIN_SPEED = 50.0;
+// ignore: constant_identifier_names
+const RAIN_WIND_SPEED = -5.0;
+// ignore: constant_identifier_names
+const MAX_PARTICLES = 20;
