@@ -41,7 +41,7 @@ class _MainAppState extends State<MainApp> {
         ),
         brightness: Brightness.light,
       ),
-      home: CupertinoPageScaffold(child: mainPage),
+      home: mainPage,
     );
   }
 
