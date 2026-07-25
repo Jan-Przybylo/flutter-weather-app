@@ -15,11 +15,6 @@ void main() async {
   runApp(MainApp());
 }
 
-//TODO
-// - zapamietywanie miasta (automatyczne wlaczanie weatherPage)
-// - ui (reszta informacji do wyswietlenia)
-// - pogoda z ostatnich dni
-// - navigator
 class MainApp extends StatefulWidget {
   MainApp({super.key});
 
