@@ -39,6 +39,7 @@ class _WeatherThunderstormEffectState extends State<WeatherThunderstormEffect> {
   }
 
   void doLightning() async {
+    if (!mounted) return;
     setState(() {
       lightningOpacity = 1.0;
     });
