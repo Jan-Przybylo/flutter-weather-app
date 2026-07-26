@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 // uses fake api response if true
-const bool debug = true;
+const bool debug = false;
 
 const double cardSizeFont = 75.0;
 const double largeFont = 20.0;

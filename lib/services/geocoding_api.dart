@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class GeocodingApi {
   Future<String> getGeocoding({bool debug = false, required String city}) async {
     final String API_KEY = dotenv.env['API_KEY'] ?? "";
-    if (API_KEY == "") throw Exception("Brakuje klucza API!");
+    if (!debug && API_KEY == "") throw Exception("Brakuje klucza API!");
     final String apikey = API_KEY;
     final url = Uri.https("api.openweathermap.org", "/geo/1.0/direct", {
       'q': city,

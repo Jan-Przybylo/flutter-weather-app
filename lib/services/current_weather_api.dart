@@ -7,7 +7,7 @@ class CurrentWeatherApi {
 
   Future<String> getWeather({bool debug = false, required City city }) async {
     final String API_KEY = dotenv.env['API_KEY'] ?? "";
-    // if (API_KEY == "") throw Exception("Brakuje klucza API!");
+    if (!debug && API_KEY == "") throw Exception("Brakuje klucza API!");
     final String apikey = API_KEY;
     final url = Uri.https("api.openweathermap.org", "/data/2.5/weather", {
       'lat': city.lat.toString(),
