@@ -31,11 +31,23 @@ Weather app with featuring weather effects (like [rain](#rain), [thunderstorm](#
 - - [Direct geocoding](https://openweathermap.org/api/geocoding-api?collection=other#direct)
 
 ## Installation
-Project uses [flutter](https://flutter.dev/) framework and [openWeather](https://openweathermap.org/). \
-App to work needs ```.env``` file with:
+This project uses [flutter](https://flutter.dev/) framework and [openWeather](https://openweathermap.org/). \
+App requires ```.env``` file with:
 ```
 API_KEY=your_api_key
 ```
+You can enable ```debug mode``` to work with test data without ```API_KEY```: 
+
+```dart
+// lib/core/constants.dart
+...
+// uses fake api response if true
+const bool debug = true;
+...
+```
+> [!WARNING]
+> The ```.env``` **file** is still required and it must be in the root directory (todo)
+
 ```
 flutter pub get
 flutter run
@@ -71,3 +83,4 @@ class WeatherEffects {
 # TODO
  - adaptive layout
  - snow weather effect
+ - fix .evn file is required
