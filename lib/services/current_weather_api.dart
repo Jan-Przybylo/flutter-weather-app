@@ -34,7 +34,7 @@ class CurrentWeatherApi {
           "id": 804,
           "main": "Thunderstorm",
           "description": "overcast clouds",
-          "icon": "04d",
+          "icon": "11d",
         },
       ],
       "base": "stations",

@@ -32,7 +32,7 @@ class CurrentWeatherRepository {
     final String icon = temp['weather'][0]['icon'].toString().substring(0,2);
 
     Weather output = Weather(
-      city: temp['name'],
+      city: city.name,
       temperature: temp['main']['temp'].toString(),
       feelsTemperature: temp['main']['feels_like'].toString().toString(),
       minTemp: temp['main']['temp_min'].toString(),
