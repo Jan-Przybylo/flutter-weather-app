@@ -19,7 +19,7 @@ class CityButton extends StatelessWidget {
     return CupertinoListTile.notched(
       leading: leading,
       title: Text(
-        '${city.name}, ${city.country}, ${city.state}',
+        city.fullName,
         style: TextStyle(color: CupertinoColors.black),
       ),
       trailing: CupertinoListTileChevron(),

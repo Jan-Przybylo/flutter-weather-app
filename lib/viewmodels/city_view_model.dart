@@ -18,7 +18,7 @@ class CityViewModel extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     final String? cityJson = prefs.getString('city');
 
-    if (cityJson == null || cityJson.isEmpty) return null;
+    if (cityJson == null || cityJson.isEmpty) return;
 
     final cityMap = jsonDecode(cityJson) as Map<String, dynamic>;
     final savedCity = City.fromJson(cityMap);

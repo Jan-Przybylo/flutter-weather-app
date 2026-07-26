@@ -1,11 +1,17 @@
 class City {
   final String name;
-  final String country;
-  final String state;
+  final String? country;
+  final String? state;
   final String lat;
   final String lon;
 
   bool saved = false;
+
+  String get fullName {
+    final String c = (country == null) ?  '' : ', $country';
+    final String s = (state == null) ? '' : ', $state';
+    return '$name$c$s';
+  }
 
   City({
     required this.name,
