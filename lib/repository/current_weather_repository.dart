@@ -17,7 +17,7 @@ class CurrentWeatherRepository {
     try {
       unformatedWeather = await api.getWeather(debug: debug, city: city);
     } catch (e) {
-      throw Exception("Nie udało się pobrać pogody!");
+      throw Exception("R: Nie udało się pobrać pogody!: $e");
     }
 
     return stringToWeather(unformatedWeather);

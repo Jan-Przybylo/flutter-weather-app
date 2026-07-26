@@ -19,7 +19,6 @@ class CurrentWeatherApi {
       final response = await http.get(url);
 
       if (response.statusCode != 200) {
-        // print("FAILED" + response.body);
         throw Exception("Failed to get data: $response");
       }
       return response.body;

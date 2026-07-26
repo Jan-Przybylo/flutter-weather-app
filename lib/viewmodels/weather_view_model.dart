@@ -12,26 +12,21 @@ class WeatherViewModel extends ChangeNotifier {
   Weather? get weather => _weather;
   List<Weather>? get forecastWeather => _forecastWeather;
 
-
   bool loading = false;
   bool hasData = false;
 
   String? error;
 
   final City city;
-  WeatherViewModel({required this.city})
-  {
+  WeatherViewModel({required this.city}) {
     _currentWeatherRepository = CurrentWeatherRepository(city: city);
     _forecastWeatherRepository = ForecastWeatherRepository(city: city);
-
   }
 
   late CurrentWeatherRepository _currentWeatherRepository;
   late ForecastWeatherRepository _forecastWeatherRepository;
 
-
-  Future<void> loadWeather() async
-  {
+  Future<void> loadWeather() async {
     try {
       loading = true;
       hasData = false;
@@ -39,32 +34,31 @@ class WeatherViewModel extends ChangeNotifier {
 
       await loadCurrentWeather();
       await loadForecastWeather();
-    } catch (e) {
-      Exception(e);
-    }finally {
       hasData = true;
+    } catch (e) {
+      hasData = false;
+      throw Exception(e);
+    } finally {
       loading = false;
       notifyListeners();
     }
   }
 
-
-  Future<void> loadForecastWeather() async
-  {
+  Future<void> loadForecastWeather() async {
     try {
       _forecastWeather = await _forecastWeatherRepository.fetchData();
     } catch (e) {
-      error = "Nie udało się wczytać prognozy pogody $e";
+      error = "VM: Nie udało się wczytać prognozy pogody $e";
       throw Exception(error);
-    } 
+    }
   }
 
   Future<void> loadCurrentWeather() async {
     try {
       _weather = await _currentWeatherRepository.fetchData();
     } catch (e) {
-      error = "Nie udało się wczytać pogody $e";
+      error = "VM: Nie udało się wczytać pogody $e";
       throw Exception(error);
-    } 
+    }
   }
 }

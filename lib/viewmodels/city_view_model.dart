@@ -35,12 +35,13 @@ class CityViewModel extends ChangeNotifier {
       cities = await cityRepository.fetchData(city: query);
       await loadSavedData();
 
+      hasData = true;
     } catch (e) {
-      error = "Nie udało się uzyskać informacji o mieście! \n $e";
+      hasData = false;
+      error = "WM: Nie udało się uzyskać informacji o mieście! \n $e";
       throw Exception(error);
     } finally {
       loading = false;
-      hasData = true;
       notifyListeners();
     }
   }
