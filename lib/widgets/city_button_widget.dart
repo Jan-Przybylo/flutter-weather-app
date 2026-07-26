@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
@@ -14,7 +13,7 @@ class CityButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final leading;
+    final StatelessWidget leading;
     if(city.saved) leading = Icon(CupertinoIcons.home, color: CupertinoColors.black,);
     else leading = Container();
     return CupertinoListTile.notched(

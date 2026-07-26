@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:weather/core/constants.dart';
 import 'package:weather/effects/weather_clear_effect.dart';
 import 'package:weather/effects/weather_clouds_effect.dart';
 import 'package:weather/effects/weather_rain_effect.dart';
@@ -17,7 +16,6 @@ abstract class WeatherCustomEffect extends StatefulWidget
 }
 
 
-//WIP
 class WeatherEffects {
   final WeatherType type;
   WeatherEffects({required this.type});
