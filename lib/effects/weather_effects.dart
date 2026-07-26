@@ -24,12 +24,9 @@ class WeatherEffects {
     return switch(type){
     WeatherType.clear => WeatherClearEffect(),
     WeatherType.rain => WeatherRainEffect(),
-    WeatherType.snow => WeatherThunderstormEffect(),
+    WeatherType.snow => WeatherRainEffect(), // todo
     WeatherType.clouds => WeatherCloudsEffect(),
     WeatherType.thunderstorm => WeatherThunderstormEffect(),
     _ => WeatherThunderstormEffect(),
   }; }
-
-
- 
 }
