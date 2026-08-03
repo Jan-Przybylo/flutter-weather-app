@@ -2,10 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/core/colors/colors.dart';
 import 'package:weather/core/constants/animation_duration.dart';
+import 'package:weather/core/exception/api_exception.dart';
+import 'package:weather/core/exception/weather_exception.dart';
+import 'package:weather/core/widgets/alert.dart';
 import 'package:weather/features/weather/presentation/cubit/weather_cubit.dart';
 import 'package:weather/features/weather/presentation/cubit/weather_state.dart';
 import 'package:weather/features/weather/presentation/effects/weather_effects.dart';
 import 'package:weather/features/weather/presentation/widgets/weather_content.dart';
+import 'package:weather/l10n/app_localizations.dart';
 
 class WeatherView extends StatelessWidget {
   const WeatherView({super.key});
@@ -14,7 +18,7 @@ class WeatherView extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       backgroundColor: black,
-      child: BlocBuilder<WeatherCubit, WeatherState>(
+      child: BlocConsumer<WeatherCubit, WeatherState>(
         builder: (context, state) {
           final WeatherEffects effect = switch (state) {
             WeatherLoading() => WeatherEffects(),
@@ -38,7 +42,7 @@ class WeatherView extends StatelessWidget {
                 child: switch (state) {
                   WeatherLoading() => loadingState(context),
                   WeatherSuccess() => WeatherContent(weather: state.weather),
-                  WeatherFailure() || _ => Text("failure"), //TODO
+                  WeatherFailure() || _ => SizedBox.shrink(),
                 },
               ),
               // Weather efects
@@ -51,6 +55,25 @@ class WeatherView extends StatelessWidget {
               },
             ],
           );
+        },
+        listenWhen: (previous, current) => (!Alert.isShow),
+        listener: (context, state) {
+          if(state is WeatherFailure) Navigator.of(context).pop();
+          return switch (state) {
+            WeatherFailure(exception: ApiNotFoundException()) => Alert.show(
+              context,
+              title: AppLocalizations.of(context)!.error,
+              message: AppLocalizations.of(context)!.emANF,
+            ),
+            WeatherFailure(exception: WeatherApiException()) => Alert.show(
+              context,
+              title: AppLocalizations.of(context)!.error,
+              message: AppLocalizations.of(context)!.emS,
+            ),
+
+            WeatherState() => null,
+          };
+
         },
       ),
     );

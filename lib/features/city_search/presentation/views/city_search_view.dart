@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/core/colors/colors.dart';
 import 'package:weather/core/exception/api_exception.dart';
 import 'package:weather/core/exception/city_search_exception.dart';
-import 'package:weather/core/exception/weather_exception.dart';
 import 'package:weather/core/widgets/alert.dart';
 import 'package:weather/features/city_search/presentation/cubits/city_cubit.dart';
 import 'package:weather/features/city_search/presentation/cubits/city_state.dart';

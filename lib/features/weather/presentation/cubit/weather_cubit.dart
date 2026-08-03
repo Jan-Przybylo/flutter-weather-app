@@ -21,7 +21,7 @@ class WeatherCubit extends Cubit<WeatherState> {
       emit(WeatherFailure(exception: WeatherApiException()));
     } on ApiNotFoundException {
       if (isClosed) return;
-      emit(WeatherFailure(exception: WeatherApiException()));
+      emit(WeatherFailure(exception: ApiNotFoundException()));
     }
   }
 }
