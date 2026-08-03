@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather/core/domain/entities/city_entity.dart';
+import 'package:weather/core/pages/not_found_page.dart';
 import 'package:weather/features/city_search/presentation/pages/city_search_page.dart';
 import 'package:weather/features/weather/presentation/pages/weather_page.dart';
 
@@ -17,14 +18,14 @@ class AppRouter {
                 WeatherPage(city: routeSettings.arguments as CityEntity)),
           );
         } else {
-          throw UnimplementedError();
+          return MaterialPageRoute(builder: ((context) => PageNotFound()));
         }
 
       case '/search':
         return MaterialPageRoute(builder: ((context) => CitySearchPage()));
 
       default:
-        return MaterialPageRoute(builder: ((context) => CitySearchPage()));
+        return MaterialPageRoute(builder: ((context) => PageNotFound()));
     }
   }
 

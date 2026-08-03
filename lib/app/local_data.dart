@@ -5,8 +5,8 @@ class LocalData {
   final GetSavedCityUsecase _getSavedCityUsecase;
   LocalData({required this._getSavedCityUsecase});
 
-  Future<CityEntity?> load() async
+  Future<CityEntity?> loadSavedCity() async
   {
-    return _getSavedCityUsecase.load();
+    return _getSavedCityUsecase.load(); // TODO zla architektura 
   }
 }
