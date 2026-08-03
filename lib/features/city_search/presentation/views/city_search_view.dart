@@ -5,6 +5,7 @@ import 'package:weather/features/city_search/presentation/cubits/city_cubit.dart
 import 'package:weather/features/city_search/presentation/cubits/city_state.dart';
 import 'package:weather/features/city_search/presentation/widgets/city_button_widget.dart';
 import 'package:weather/features/city_search/presentation/widgets/city_search_text_field.dart';
+import 'package:weather/l10n/app_localizations.dart';
 
 class CitySearchView extends StatelessWidget {
   const CitySearchView({super.key});
@@ -16,7 +17,7 @@ class CitySearchView extends StatelessWidget {
       child: CupertinoListSection.insetGrouped(
         header: SafeArea(
           child: Text(
-            "Search for a city",
+            AppLocalizations.of(context)!.searchTitle,
             style: TextStyle(color: CupertinoColors.black),
           ),
         ),
@@ -34,7 +35,7 @@ class CitySearchView extends StatelessWidget {
               return switch (state) {
                 CityReady() => Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text('Empty list'),
+                  child: Text(AppLocalizations.of(context)!.emptyList),
                 ),
                 CitySearchLoading() => Text(CitySearchLoading.message),
                 CitySuccess() => Column(
@@ -51,7 +52,7 @@ class CitySearchView extends StatelessWidget {
                       ),
                   ],
                 ),
-                _ => Text("err"),
+                _ => Text("err"), // TODO
               };
             }),
           ),

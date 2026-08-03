@@ -5,6 +5,7 @@ import 'package:weather/core/widgets/line.dart';
 import 'package:weather/features/weather/domain/entities/weather_entity.dart';
 import 'package:weather/core/widgets/animated_fake_glass.dart';
 import 'package:weather/features/weather/presentation/utils/weather_image_mapper.dart';
+import 'package:weather/l10n/app_localizations.dart';
 
 class MainWeatherCard extends StatelessWidget {
   final WeatherEntity weather;
@@ -65,12 +66,12 @@ class MainWeatherCard extends StatelessWidget {
                   child: RichText(
                     text: TextSpan(
                       children: <TextSpan>[
-                        TextSpan(text: "from "),
+                        TextSpan(text: '${AppLocalizations.of(context)!.from} '),
                         TextSpan(
                           text: '${weather.minTemp}$degreeSymbol',
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        TextSpan(text: " to "),
+                        TextSpan(text: ' ${AppLocalizations.of(context)!.to} '),
                         TextSpan(
                           text: '${weather.maxTemp}$degreeSymbol',
                           style: TextStyle(fontWeight: FontWeight.bold),

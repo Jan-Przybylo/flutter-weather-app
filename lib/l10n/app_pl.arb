@@ -1,0 +1,23 @@
+{
+  "searchTitle": "Wyszukaj miasto",
+
+  "searchPlaceholder": "Wpisz miasto",
+
+  "forecast": "Prognoza",
+
+  "now": "Teraz",
+
+  "from": "od",
+
+  "to": "do",
+  
+  "feelsLike": "Odczuwalna",
+  
+  "pressure": "Ciśnienie",
+  
+  "windSpeed": "Prędkość wiatru",
+  
+  "windDirection": "Kierunek wiatru",
+  
+  "cloudiness": "Zachmurzenie"
+}

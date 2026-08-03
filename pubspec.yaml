@@ -17,6 +17,9 @@ dependencies:
   equatable: ^2.1.0
   flutter_bloc: ^9.1.1
   get_it: ^9.2.1
+  flutter_localizations:
+    sdk: flutter
+  intl: any
 
 
 
@@ -27,6 +30,7 @@ dev_dependencies:
 
 
 flutter:
+  generate: true
   uses-material-design: true
   
   assets:

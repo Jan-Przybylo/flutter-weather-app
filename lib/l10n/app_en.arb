@@ -1,0 +1,61 @@
+{
+  "searchTitle": "Search for a city",
+  "@searchTitle": {
+    "description": ""
+  },
+
+  "searchPlaceholder": "Enter the city",
+  "@searchPlaceholder": {
+    "description": ""
+  },
+
+  "emptyList": "Empty list",
+  "@emptyList": {
+    "description": ""
+  },
+
+  "forecast": "Forecast",
+  "@forecast": {
+    "description": ""
+  },
+
+  "now": "Now",
+  "@now": {
+    "description": ""
+  },
+
+  "from": "from",
+  "@from":{
+    "description": ""
+  },
+
+  "to": "to",
+  "@to":{
+    "description": ""
+  },
+
+  "feelsLike": "Feels like",
+  "@feelsLike": {
+    "description": ""
+  },
+
+  "pressure": "Pressure",
+  "@pressure": {
+    "description": ""
+  },
+
+  "windSpeed": "Wind speed",
+  "@windSpeed": {
+    "description": ""
+  },
+
+  "windDirection": "Wind direction",
+  "@windDirection": {
+    "description": ""
+  },
+
+  "cloudiness": "Cloudiness",
+  "@cloudiness": {
+    "description": ""
+  }
+}

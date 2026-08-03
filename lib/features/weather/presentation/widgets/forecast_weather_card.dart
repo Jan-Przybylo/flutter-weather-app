@@ -3,6 +3,7 @@ import 'package:weather/core/constants/constants.dart';
 import 'package:weather/core/widgets/animated_fake_glass.dart';
 import 'package:weather/features/weather/domain/entities/weather_entity.dart';
 import 'package:weather/features/weather/presentation/utils/weather_image_mapper.dart';
+import 'package:weather/l10n/app_localizations.dart';
 
 class ForecastWeatherCard extends StatelessWidget {
   final List<WeatherEntity> _forecastWeather;
@@ -14,7 +15,7 @@ class ForecastWeatherCard extends StatelessWidget {
         padding: EdgeInsets.all(15.0),
         child: Column(
           children: [
-            Text("Forecast"),
+            Text(AppLocalizations.of(context)!.forecast),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: SizedBox(
@@ -42,7 +43,7 @@ class ForecastWeatherCard extends StatelessWidget {
     WeatherEntity w, {
     bool first = false,
   }) {
-    final time = first ? "Now" : w.time.hour.toString();
+    final time = first ? AppLocalizations.of(context)!.now : w.time.hour.toString();
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(

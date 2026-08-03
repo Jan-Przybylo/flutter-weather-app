@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class CityEntity extends Equatable{
+class CityEntity with Equatable{
   final String name;
   final String? country;
   final String? state;

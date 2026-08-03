@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:weather/core/constants/constants.dart';
 import 'package:weather/core/widgets/glass_card.dart';
 import 'package:weather/core/widgets/wide_glass_card.dart';
 import 'package:weather/features/weather/domain/entities/weather_entity.dart';
 import 'package:weather/features/weather/presentation/utils/weather_image_mapper.dart';
+import 'package:weather/l10n/app_localizations.dart';
 
 class ExtraInformationCards extends StatelessWidget {
   final WeatherEntity weather;
@@ -19,13 +19,13 @@ class ExtraInformationCards extends StatelessWidget {
           spacing: 8,
           children: [
             GlassCard(
-              title: 'Feels like',
+              title: AppLocalizations.of(context)!.feelsLike,
               text: '${weather.fFeelsLike}$degreeSymbol',
               icon: CupertinoIcons.thermometer,
             ),
 
             GlassCard(
-              title: "Pressure",
+              title: AppLocalizations.of(context)!.pressure,
               text: '${weather.pressure} hPa',
               icon: CupertinoIcons.speedometer,
             ),
@@ -35,19 +35,19 @@ class ExtraInformationCards extends StatelessWidget {
           spacing: 8,
           children: [
             GlassCard(
-              title: 'Wind speed',
+              title: AppLocalizations.of(context)!.windSpeed,
               text: '${weather.windSpeed} m/s',
               icon: CupertinoIcons.wind,
             ),
             GlassCard(
-              title: 'Wind direction',
+              title: AppLocalizations.of(context)!.windDirection,
               text: '${weather.windDeg}$degreeSymbol deg',
               icon: CupertinoIcons.arrow_up_right,
             ),
           ],
         ),
         WideGlassCard(
-          title: 'Cloudiness',
+          title: AppLocalizations.of(context)!.cloudiness,
           left: Text(
             '${weather.cloudinessPercentage}%',
             style: TextStyle(fontWeight: FontWeight.w100),

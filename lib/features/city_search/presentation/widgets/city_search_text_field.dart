@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/core/constants/constants.dart';
 import 'package:weather/features/city_search/presentation/cubits/city_cubit.dart';
 import 'package:weather/features/city_search/presentation/cubits/city_state.dart';
+import 'package:weather/l10n/app_localizations.dart';
 
 class CitySearchTextField extends StatefulWidget {
   final Function onSearch;
@@ -21,6 +22,7 @@ class _CitySearchTextFieldState extends State<CitySearchTextField> {
       height: 40,
       child: CupertinoTextField(
         controller: _controller,
+        placeholder: AppLocalizations.of(context)!.searchPlaceholder,
         padding: EdgeInsetsGeometry.all(8.0),
         style: TextStyle(fontSize: largeFont, color: CupertinoColors.black),
         decoration: BoxDecoration(
