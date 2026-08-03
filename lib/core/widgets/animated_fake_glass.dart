@@ -14,6 +14,7 @@ class AnimatedFakeGlass extends StatefulWidget {
 
 
 class _AnimatedFakeGlassState extends State<AnimatedFakeGlass> {
+  // Number of children
   static int index = 1;
   double _target = 0.0;
 

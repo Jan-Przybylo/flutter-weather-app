@@ -18,8 +18,8 @@ class WeatherRepositoryImpl implements WeatherRepository{
     try {
       currentWeather = await _currentWeatherApi.getWeather(city: city);
       forecastWeather = await _forecastWeatherApi.getWeather(city: city);
-    } catch (e) {
-      throw WeatherApiException(e);
+    } catch (_) {
+      rethrow;
     }
 
     return FullWeatherEntity(currentWeather: currentWeather, forecastWeather: forecastWeather);

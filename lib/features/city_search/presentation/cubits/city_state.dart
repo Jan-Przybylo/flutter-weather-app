@@ -22,4 +22,7 @@ class CitySuccess extends CityState {
   CitySuccess({required this.cities, this.saved});
 }
 
-class CityFailure extends CityState {}
+class CityFailure extends CityState {
+  final Exception? exception;
+  CityFailure({this.exception});
+}

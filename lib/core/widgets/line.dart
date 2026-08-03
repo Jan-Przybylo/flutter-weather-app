@@ -9,7 +9,7 @@ class Line extends StatelessWidget {
     return Expanded(
       child: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: Container(height: 0.5, width: 1000, color: white),
+        child: Container(height: 0.5, width: double.infinity, color: white),
       ),
     );
   }

@@ -2,7 +2,10 @@ import 'package:weather/features/weather/domain/entities/full_weather_entity.dar
 
 abstract class WeatherState {}
 
-class WeatherFailure implements WeatherState {}
+class WeatherFailure implements WeatherState {
+  final Exception? exception;
+  WeatherFailure({this.exception});
+}
 
 class WeatherLoading implements WeatherState {}
 

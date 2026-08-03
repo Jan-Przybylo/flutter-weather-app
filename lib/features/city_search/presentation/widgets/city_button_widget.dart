@@ -28,6 +28,6 @@ class CityButton extends StatelessWidget {
   }
 
   void changeToCity(BuildContext context, {required CityEntity city}) {
-    Navigator.of(context).pushNamed('/weather', arguments: city);
+    Navigator.of(context).pushNamed('/weathers', arguments: city);
   }
 }

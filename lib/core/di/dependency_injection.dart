@@ -21,7 +21,9 @@ import 'package:weather/features/weather/presentation/cubit/weather_cubit.dart';
 GetIt getIt = GetIt.instance;
 
 void loadLocator() {
-  //Weather feature
+  // ************
+  // Weather feature
+  // ************
   if (!debug) {
     getIt.registerFactory<WeatherCubit>(
       () => WeatherCubit(

@@ -14,7 +14,7 @@ void main() async {
   loadLocator();
 
   // TODO zla architektura
-  final AppRouter appRouter = AppRouter(await getIt<LocalData>().load());
+  final AppRouter appRouter = AppRouter(await getIt<LocalData>().loadSavedCity());
 
   runApp(WeatherApp(appRouter: appRouter));
 }

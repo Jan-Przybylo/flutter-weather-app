@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/core/domain/entities/city_entity.dart';
+import 'package:weather/core/exception/api_exception.dart';
+import 'package:weather/core/exception/city_search_exception.dart';
 import 'package:weather/features/city_search/domain/usecases/get_cities_usecase.dart';
 import 'package:weather/features/city_search/domain/usecases/get_saved_city_usecase.dart';
 import 'package:weather/features/city_search/domain/usecases/save_city_usecase.dart';
@@ -26,9 +28,11 @@ class CityCubit extends Cubit<CityState> {
       final cities = await _getCitiesUseCase.getCities(cityQuery: cityQuery);
       lastSuccessState = CitySuccess(cities: cities, saved: savedCity);
       emit(lastSuccessState);
-    } catch (e) {
-      throw UnimplementedError('$e');
-    }
+    } on ApiNotFoundException {
+      emit(CityFailure(exception: ApiNotFoundException()));
+    } on CitySearchApiException {
+      emit(CityFailure(exception: CitySearchApiException()));
+    } 
   }
 
   void saveCity({required CityEntity city}) {

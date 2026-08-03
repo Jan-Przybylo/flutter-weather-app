@@ -16,8 +16,8 @@ class CityRepositoryImpl implements CityRepository {
     final Set<CityEntity> output;
     try {
       output = await _cityDataSource.getGeocoding(cityQuery: cityQuery);
-    } catch (e) {
-      throw UnimplementedError('repo: $e');
+    } catch (_) {
+      rethrow;
     }
     return output;
   }
