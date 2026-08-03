@@ -1,5 +1,4 @@
 import 'package:weather/core/domain/entities/city_entity.dart';
-import 'package:weather/core/exception/weather_exception.dart';
 import 'package:weather/features/weather/data/data_sources/weather_api.dart';
 import 'package:weather/features/weather/domain/entities/full_weather_entity.dart';
 import 'package:weather/features/weather/domain/entities/weather_entity.dart';
