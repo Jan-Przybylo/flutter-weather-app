@@ -175,6 +175,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Page not found!'**
   String get pageNotFound;
+
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get error;
+
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'Your API key does not exist!'**
+  String get emANF;
+
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'Server error. Please try again later.'**
+  String get emS;
 }
 
 class _AppLocalizationsDelegate

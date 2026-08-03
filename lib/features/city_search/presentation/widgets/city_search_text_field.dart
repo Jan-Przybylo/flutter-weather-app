@@ -43,7 +43,7 @@ class _CitySearchTextFieldState extends State<CitySearchTextField> {
     );
   }
 
-  void requestCityQuery() async {
+  Future<void> requestCityQuery() async { // TODO
     final String userInput = _controller.text;
     final state = context.read<CityCubit>().state;
 
@@ -54,7 +54,7 @@ class _CitySearchTextFieldState extends State<CitySearchTextField> {
     }
 
     await Future.delayed(Duration(seconds: 1));
-    if (_controller.text != userInput) requestCityQuery();
+    if (_controller.text != userInput && state is! CitySearchLoading) requestCityQuery();
   }
 
   @override

@@ -46,4 +46,13 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get pageNotFound => 'Strona nie została znaleziona!';
+
+  @override
+  String get error => 'Błąd';
+
+  @override
+  String get emANF => 'Twój klucz API nie istnieje!';
+
+  @override
+  String get emS => 'Błąd serwera. Spróbuj ponownie później';
 }

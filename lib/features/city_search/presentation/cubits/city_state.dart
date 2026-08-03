@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:weather/core/domain/entities/city_entity.dart';
 
 abstract class CityState {}
@@ -22,7 +23,10 @@ class CitySuccess extends CityState {
   CitySuccess({required this.cities, this.saved});
 }
 
-class CityFailure extends CityState {
+class CityFailure extends CityState with Equatable {
   final Exception? exception;
   CityFailure({this.exception});
+  
+  @override
+  List<Object?> get props => [exception.toString()];
 }

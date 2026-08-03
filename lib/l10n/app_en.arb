@@ -62,5 +62,20 @@
   "pageNotFound": "Page not found!",
   "@pageNotFound": {
     "description": ""
+  },
+
+"error": "Error",
+  "@error": {
+    "description": ""
+  },
+
+  "emANF": "Your API key does not exist!",
+  "@emANF": {
+    "description": ""
+  },
+
+  "emS": "Server error. Please try again later.",
+  "@emS": {
+    "description": ""
   }
 }

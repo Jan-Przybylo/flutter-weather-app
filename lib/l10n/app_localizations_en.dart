@@ -46,4 +46,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get pageNotFound => 'Page not found!';
+
+  @override
+  String get error => 'Error';
+
+  @override
+  String get emANF => 'Your API key does not exist!';
+
+  @override
+  String get emS => 'Server error. Please try again later.';
 }
