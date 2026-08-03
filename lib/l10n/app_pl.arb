@@ -19,5 +19,7 @@
   
   "windDirection": "Kierunek wiatru",
   
-  "cloudiness": "Zachmurzenie"
+  "cloudiness": "Zachmurzenie",
+
+  "pageNotFound": "Strona nie została znaleziona!"
 }

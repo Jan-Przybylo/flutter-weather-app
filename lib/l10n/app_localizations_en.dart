@@ -43,4 +43,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get cloudiness => 'Cloudiness';
+
+  @override
+  String get pageNotFound => 'Page not found!';
 }

@@ -57,5 +57,10 @@
   "cloudiness": "Cloudiness",
   "@cloudiness": {
     "description": ""
+  },
+
+  "pageNotFound": "Page not found!",
+  "@pageNotFound": {
+    "description": ""
   }
 }

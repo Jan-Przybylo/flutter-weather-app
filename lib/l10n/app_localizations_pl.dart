@@ -43,4 +43,7 @@ class AppLocalizationsPl extends AppLocalizations {
 
   @override
   String get cloudiness => 'Zachmurzenie';
+
+  @override
+  String get pageNotFound => 'Strona nie została znaleziona!';
 }

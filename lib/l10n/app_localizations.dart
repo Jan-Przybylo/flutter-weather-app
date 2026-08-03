@@ -169,6 +169,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Cloudiness'**
   String get cloudiness;
+
+  ///
+  ///
+  /// In en, this message translates to:
+  /// **'Page not found!'**
+  String get pageNotFound;
 }
 
 class _AppLocalizationsDelegate
