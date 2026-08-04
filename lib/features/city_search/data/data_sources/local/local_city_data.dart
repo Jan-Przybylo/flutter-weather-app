@@ -1,20 +1,15 @@
 import 'dart:convert';
-
-import 'package:flutter/cupertino.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:local_storage/local_storage.dart';
 import 'package:weather/features/city_search/data/models/city_model.dart';
 
 class LocalCityData {
   void saveCity({required CityModel city}) async {
-    debugPrint("saved ${jsonEncode(city.toJson())}");
-    final prefs = await SharedPreferences.getInstance();
-    prefs.setString('city', jsonEncode(city.toJson()));
+    await LocalStorage.save(key: 'city', value: jsonEncode(city.toJson()));
   }
 
   Future<CityModel?> loadCity() async {
-    final prefs = await SharedPreferences.getInstance();
-    final String? stringData = prefs.getString('city');
-    if(stringData == null) return null;
-    return CityModel.fromMap(jsonDecode(stringData));
+    if(!await LocalStorage.has(key: 'city')) return null;
+    final String? textCity = await LocalStorage.load(key: 'city');
+    return CityModel.fromMap(jsonDecode(textCity!)); 
   }
 }
