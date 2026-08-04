@@ -169,6 +169,8 @@ app.*.symbols
 .gclient_previous_custom_vars
 .gclient_previous_sync_commits
 
-
 #todos
 todoTranslate.txt
+
+# FVM Version Cache
+.fvm/
