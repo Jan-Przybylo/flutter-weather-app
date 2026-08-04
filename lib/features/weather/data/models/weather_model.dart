@@ -49,33 +49,8 @@ class WeatherModel extends WeatherEntity {
     final String city = map['city']['name']; 
     for (final temp in map['list']) {
 
-      final WeatherType type = WeatherModel.stringToWeatherType(
-        temp['weather'][0]['main'].toString(),
-      );
-
-      final bool isDay = temp['weather'][0]['icon'][2] == 'd';
-
-      final String icon = temp['weather'][0]['icon'].toString().substring(0, 2);
-
-
       output.add(
-        WeatherModel(
-          city: city,
-          temperature: temp['main']['temp'].toString(),
-          feelsTemperature: temp['main']['feels_like'].toString(),
-          minTemp: temp['main']['temp_min'].toString(),
-          maxTemp: temp['main']['temp_max'].toString(),
-          weatherType: type,
-          weatherIcon: int.parse(icon),
-          isDay: isDay,
-          weatherDescription: temp['weather'][0]['description'].toString(),
-          pressure: temp['main']['pressure'].toString(),
-          humidity: temp['main']['humidity'].toString(),
-          windSpeed: temp['wind']['speed'].toString(),
-          windDeg: temp['wind']['deg'].toString(),
-          cloudinessPercentage: temp['clouds']['all'].toString(),
-          time: DateTime.fromMicrosecondsSinceEpoch(temp['dt'] * fromMicrosecondsToSeconds),
-        ),
+        WeatherModel.fromMap(temp, city)
       );
     }
 

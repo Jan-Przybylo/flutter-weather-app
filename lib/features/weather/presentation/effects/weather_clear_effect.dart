@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:weather/core/constants/constants.dart';
+import 'package:weather/core/colors/colors.dart';
 import 'package:weather/features/weather/presentation/effects/weather_effects.dart';
 
 class WeatherClearEffect extends WeatherCustomEffect {

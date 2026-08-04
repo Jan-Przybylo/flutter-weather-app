@@ -3,19 +3,13 @@ import 'package:weather/core/domain/entities/city_entity.dart';
 
 abstract class CityState {}
 
-class CityInit extends CityState {
-  static const String message = 'Empty list';
-}
+class CityInit extends CityState {}
 
-class CitySavedLoding extends CityState {
-  static const String message = 'Loading saved data';
-}
+class CitySavedLoding extends CityState {}
 
 class CityReady extends CityState {}
 
-class CitySearchLoading extends CityState {
-  static const String message = 'Loading cities';
-}
+class CitySearchLoading extends CityState {}
 
 class CitySuccess extends CityState {
   final Set<CityEntity> cities;
@@ -26,7 +20,7 @@ class CitySuccess extends CityState {
 class CityFailure extends CityState with Equatable {
   final Exception? exception;
   CityFailure({this.exception});
-  
+
   @override
   List<Object?> get props => [exception.toString()];
 }

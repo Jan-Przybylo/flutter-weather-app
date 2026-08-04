@@ -56,6 +56,7 @@ class WeatherView extends StatelessWidget {
             ],
           );
         },
+        //handle errors
         listenWhen: (previous, current) => (!Alert.isShow),
         listener: (context, state) {
           if(state is WeatherFailure) Navigator.of(context).pop();

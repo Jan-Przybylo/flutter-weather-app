@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
+import 'package:weather/core/colors/colors.dart';
 import 'package:weather/core/constants/constants.dart';
 import 'package:weather/features/weather/presentation/effects/weather_effects.dart';
 
@@ -38,9 +39,9 @@ class _WeatherRainEffectState extends State<WeatherRainEffect>
     final h = screenSize.height;
 
     for (var r in particles) {
-      // if rain drop below screen
+      // if rain drop below screen, draw rain drop on top in radom x pos.
       final dx = r.position.dy > h
-          ? random.nextDouble() * w + 100
+          ? random.nextDouble() * w + X_OFFSET // number between [xoffset, w]
           : r.position.dx;
 
       final dy = r.position.dy > h ? 0 : r.position.dy;
@@ -66,7 +67,7 @@ class _WeatherRainEffectState extends State<WeatherRainEffect>
       MAX_PARTICLES,
       (_) => RainParticle(
         position: Offset(
-          random.nextDouble() * w + 100,
+          random.nextDouble() * w + X_OFFSET,
           random.nextDouble() * h,
         ),
       ),
@@ -104,8 +105,8 @@ class RainCanvas extends CustomPainter {
     paint.strokeWidth = 2.0;
     for (var rainDrop in particles) {
       canvas.drawLine(
-        rainDrop.position,
-        Offset(rainDrop.position.dx - 1, rainDrop.position.dy + 50.0),
+        rainDrop.position, // rain drop start position
+        Offset(rainDrop.position.dx - 1, rainDrop.position.dy + 50.0), // rain drop end position
         paint,
       );
     }
@@ -119,7 +120,7 @@ class RainCanvas extends CustomPainter {
 
 class RainParticle {
   RainParticle({required this.position});
-  Offset position = Offset(100, 100);
+  Offset position = Offset(0, 0);
   static const color = RAIN_DROP_COLOR;
   static const speed = RAIN_SPEED;
   static const windSpeed = RAIN_WIND_SPEED;

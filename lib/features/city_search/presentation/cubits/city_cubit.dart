@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/core/domain/entities/city_entity.dart';
 import 'package:weather/core/exception/api_exception.dart';

@@ -25,18 +25,15 @@ class CitySearchView extends StatelessWidget {
           ),
         ),
         children: [
-          BlocProvider.value(
-            value: context.read<CityCubit>(),
-            child: CitySearchTextField(
-              onSearch: (value) {
-                context.read<CityCubit>().queryCity(cityQuery: value);
-              },
-            ),
+          CitySearchTextField(
+            onSearch: (value) {
+              context.read<CityCubit>().queryCity(cityQuery: value);
+            },
           ),
           BlocConsumer<CityCubit, CityState>(
             builder: ((context, state) {
               return switch (state) {
-                CitySearchLoading() => Text(CitySearchLoading.message),
+                CitySearchLoading() => Text(AppLocalizations.of(context)!.loadingCities),
                 CitySuccess() => Column(
                   children: [
                     for (final city in state.cities)

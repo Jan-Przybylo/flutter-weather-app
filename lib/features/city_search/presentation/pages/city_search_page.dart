@@ -10,7 +10,7 @@ class CitySearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      //lazy: false, //TODO dowiedziec sie
+      lazy: false,
       create: (context) => getIt<CityCubit>()..loadSavedCity(),
       child: CitySearchView(),
     );
