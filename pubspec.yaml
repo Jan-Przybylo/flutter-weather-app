@@ -20,6 +20,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  local_storage:
+    path: packages/local_storage
 
 
 
