@@ -69,8 +69,8 @@ void loadLocator() {
 
     getSavedCityUsecase = GetSavedCityUsecase(repository: cityRepository);
   }
-  getIt.registerFactory<CityCubit>(
-    () => CityCubit(
+  getIt.registerSingleton<CityCubit>(
+    CityCubit(
       getCitiesUseCase: GetCitiesUseCase(repository: cityRepository),
       saveCityUseCase: SaveCityUseCase(repository: cityRepository),
       getSavedCityUsecase: getSavedCityUsecase,
