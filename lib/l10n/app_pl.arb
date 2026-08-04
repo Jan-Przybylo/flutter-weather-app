@@ -29,5 +29,7 @@
 
   "emS":"Błąd serwera. Spróbuj ponownie później",
 
-  "emptyList": "Pusta lista"
+  "emptyList": "Pusta lista",
+
+  "loadingCities": "Wczytywanie miast..." 
 }

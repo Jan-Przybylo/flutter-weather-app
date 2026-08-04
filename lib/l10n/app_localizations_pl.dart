@@ -18,6 +18,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get emptyList => 'Pusta lista';
 
   @override
+  String get loadingCities => 'Wczytywanie miast...';
+
+  @override
   String get forecast => 'Prognoza';
 
   @override

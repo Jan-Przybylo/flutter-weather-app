@@ -18,6 +18,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emptyList => 'Empty list';
 
   @override
+  String get loadingCities => 'Loading cities...';
+
+  @override
   String get forecast => 'Forecast';
 
   @override

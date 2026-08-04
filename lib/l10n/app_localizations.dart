@@ -119,6 +119,12 @@ abstract class AppLocalizations {
   ///
   ///
   /// In en, this message translates to:
+  /// **'Loading cities...'**
+  String get loadingCities;
+
+  ///
+  ///
+  /// In en, this message translates to:
   /// **'Forecast'**
   String get forecast;
 
