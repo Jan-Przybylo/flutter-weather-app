@@ -13,6 +13,8 @@ class LocalCityData {
 
   Future<CityModel?> loadCity() async {
     final prefs = await SharedPreferences.getInstance();
-    return CityModel.fromMap(jsonDecode(prefs.getString('city') as String));
+    final String? stringData = prefs.getString('city');
+    if(stringData == null) return null;
+    return CityModel.fromMap(jsonDecode(stringData));
   }
 }

@@ -49,6 +49,5 @@ class CityCubit extends Cubit<CityState> {
     } else {
       emit(CitySuccess(cities: {}, saved: savedCity));
     }
-    debugPrint(savedCity!.fullName);
   }
 }
