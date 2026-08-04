@@ -1,8 +1,7 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather/core/constants/constants.dart';
-import 'package:weather/features/city_search/presentation/cubits/city_cubit.dart';
-import 'package:weather/features/city_search/presentation/cubits/city_state.dart';
 import 'package:weather/l10n/app_localizations.dart';
 
 class CitySearchTextField extends StatefulWidget {
@@ -15,6 +14,7 @@ class CitySearchTextField extends StatefulWidget {
 
 class _CitySearchTextFieldState extends State<CitySearchTextField> {
   final TextEditingController _controller = TextEditingController();
+  Timer? _timer;
 
   @override
   Widget build(BuildContext context) {
@@ -43,18 +43,12 @@ class _CitySearchTextFieldState extends State<CitySearchTextField> {
     );
   }
 
-  Future<void> requestCityQuery() async { // TODO
-    final String userInput = _controller.text;
-    final state = context.read<CityCubit>().state;
-
-    if (userInput.length > 3 && state is! CitySearchLoading) {
-      await Future.delayed(Duration(milliseconds: 750)); // wait till typing
-      if (_controller.text != userInput || state is CitySearchLoading) return;
-      widget.onSearch(userInput);
+  void requestCityQuery() {
+    _timer?.cancel();
+    final userInput = _controller.text;
+    if (userInput.length > 3) {
+      _timer = Timer(debouncerDuration, () => widget.onSearch(userInput));
     }
-
-    await Future.delayed(Duration(seconds: 1));
-    if (_controller.text != userInput && state is! CitySearchLoading) requestCityQuery();
   }
 
   @override
@@ -67,6 +61,7 @@ class _CitySearchTextFieldState extends State<CitySearchTextField> {
 
   @override
   void dispose() {
+    _timer?.cancel();
     _controller.dispose();
     super.dispose();
   }
