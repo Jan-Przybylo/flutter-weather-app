@@ -22,7 +22,12 @@
   "cloudiness": "Zachmurzenie",
 
   "pageNotFound": "Strona nie została znaleziona!",
+
   "error":"Błąd",
-    "emANF":"Twój klucz API nie istnieje!",
-    "emS":"Błąd serwera. Spróbuj ponownie później"
+
+  "emANF":"Twój klucz API nie istnieje!",
+
+  "emS":"Błąd serwera. Spróbuj ponownie później",
+
+  "emptyList": "Pusta lista"
 }

@@ -15,7 +15,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get searchPlaceholder => 'Wpisz miasto';
 
   @override
-  String get emptyList => 'Empty list';
+  String get emptyList => 'Pusta lista';
 
   @override
   String get forecast => 'Prognoza';
